@@ -2,7 +2,7 @@
   "name": "纸上的彩虹",
   "type": "module",
   "version": "1.0.0",
-  "description": "彩虹的前端小窝🌈",
+  "description": "彩虹の前端小窝",
   "packageManager": "pnpm@9.12.3",
   "author": "yuan.ji <yuan.ji@ly.com>",
   "license": "MIT",

@@ -6,7 +6,7 @@ import { notes } from './notes'
  * @see https://theme-plume.vuejs.press/config/basic/
  */
 export default defineThemeConfig({
-  logo: 'https://theme-plume.vuejs.press/plume.png',
+  logo: 'https://file.40017.cn/baoxian/health/health_public/images/rainbow_small.png',
   // your git repo url
   docsRepo: '',
   docsDir: 'docs',
@@ -14,9 +14,9 @@ export default defineThemeConfig({
   appearance: true,
 
   profile: {
-    avatar: 'https://theme-plume.vuejs.press/plume.png',
+    avatar: 'https://file.40017.cn/baoxian/health/health_public/images/rainbow_small.png',
     name: '纸上的彩虹',
-    description: '彩虹的前端小窝🌈',
+    description: '彩虹の前端小窝',
     // circle: true,
     // location: '',
     // organization: '',
@@ -28,4 +28,4 @@ export default defineThemeConfig({
     { icon: 'github', link: '/' },
   ],
 
-})
+} as any)

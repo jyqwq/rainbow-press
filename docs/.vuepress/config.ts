@@ -6,7 +6,8 @@ export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
   title: '纸上的彩虹',
-  description: '彩虹的前端小窝🌈',
+  description: '彩虹の前端小窝',
+  head: [['link', { rel: 'icon', href: 'https://file.40017.cn/baoxian/health/health_public/images/rainbowsmall.ico' }]],
 
   bundler: viteBundler(),
 

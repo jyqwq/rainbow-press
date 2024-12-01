@@ -17,9 +17,8 @@ export default defineThemeConfig({
     avatar: 'https://file.40017.cn/baoxian/health/health_public/images/rainbow_small.png',
     name: '纸上的彩虹',
     description: '彩虹の前端小窝',
-    // circle: true,
-    // location: '',
-    // organization: '',
+    location: '江苏 · 苏州',
+    organization: '同程旅行',
   },
 
   navbar,

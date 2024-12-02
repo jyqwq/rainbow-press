@@ -17,8 +17,8 @@ config:
           link: /blog/
         -
           theme: alt
-          text: Github →
-          link: https://github.com/pengzhanbo/vuepress-theme-plume
+          text: 稀土掘金 →
+          link: https://juejin.cn/user/1987553160857261
 #  -
 #    type: profile
 #    name: 纸上的彩虹

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "彩虹の前端小窝",
   "packageManager": "pnpm@9.12.3",
-  "author": "yuan.ji <yuan.ji@ly.com>",
+  "author": "yuan.ji <961999367@qq.com>",
   "license": "MIT",
   "engines": {
     "node": "^18.20.0 || >=20.0.0"

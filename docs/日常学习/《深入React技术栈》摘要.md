@@ -21,7 +21,7 @@ permalink: /article/rkyan4lg/
 
 **React 组件即为组件元素。**组件元素被描述成纯粹的 JSON 对象，意味着可以使用方法或是类来构建。React组件基本上由 3 个部分组成——属性(props)、状态(state)以及生命周期方法。这里我们从一张图来简单概括React：
 
-![image-20210601162129366](/Users/jiyuan/Library/Application%20Support/typora-user-images/image-20210601162129366.png)
+![image-20210601162129366](https://file.40017.cn/baoxian/health/health_public/images/blog/image-fail.png)
 
 React 组件可以接收参数，也可能有自身状态。一旦接收到的参数或自身状态有所改变，React 组件就会执行相应的生命周期方法，最后渲染。整个过程完全符合传统组件所定义的组件职责。
 

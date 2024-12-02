@@ -3,7 +3,7 @@ import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 
 export default defineUserConfig({
-  base: '/',
+  base: '/rainbow/',
   lang: 'zh-CN',
   title: '纸上的彩虹',
   description: '彩虹の前端小窝',
@@ -13,7 +13,7 @@ export default defineUserConfig({
 
   theme: plumeTheme({
     // 添加您的部署域名
-    // hostname: 'https://your_site_url',
+    hostname: 'https://jyqwq.github.io/rainbow/',
 
     plugins: {
       /**

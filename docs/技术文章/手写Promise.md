@@ -89,7 +89,7 @@ JS执行时，V8会创建一个全局执行上下文，在创建上下文的同�
 
 （[图片来源](https://juejin.cn/post/6844903638238756878)）
 
-![image-20210828113355946](/Users/jiyuan/Library/Application%20Support/typora-user-images/image-20210828113355946.png)
+![image-20210828113355946](https://file.40017.cn/baoxian/health/health_public/images/blog/blog-78.png)
 
 
 
@@ -101,7 +101,7 @@ JS执行时，V8会创建一个全局执行上下文，在创建上下文的同�
 
 （[图片来源](https://juejin.cn/post/6992985462163898382#heading-3)）
 
-![image-20210828114457672](/Users/jiyuan/Library/Application%20Support/typora-user-images/image-20210828114457672.png)
+![image-20210828114457672](https://file.40017.cn/baoxian/health/health_public/images/blog/blog-79.png)
 
 
 

@@ -148,7 +148,7 @@ let bar: foo; 		// ERROR: "cannot find name 'foo'"
      //元组可以赋值给数组，但是数组不能赋值给元组。编译成js时两者没有区别
      ```
 
-   ![image-20210601154500376](C:\Users\何强\AppData\Roaming\Typora\typora-user-images\image-20210601154500376.png)
+   ![image-20210601154500376](https://file.40017.cn/baoxian/health/health_public/images/blog/image-fail.png)
 
    - any 任何类型
    - void  *函数返回类型注解，表示无返回*     引申：void 0
@@ -711,40 +711,40 @@ import * as $ from 'jquery';
   };
   ```
 
-  ##### Partial<T>, 让属性都变成可选的
+  ##### `Partial<T>`, 让属性都变成可选的
 
   ```ts
   type A  = {a:number, b:string}
   type A1 = Partial<A> // { a?: number; b?: string;}
   ```
 
-  ##### Required<T>, 让属性都变成必选
+  ##### `Required<T>`, 让属性都变成必选
 
   ```ts
   type A  = {a?:number, b?:string}
   type A1 = Required<A> // { a: number; b: string;}
   ```
 
-  ##### Pick<T,K>, 只保留自己选择的属性, K代表要保留的属性键值
+  ##### `Pick<T,K>`, 只保留自己选择的属性, K代表要保留的属性键值
 
   ```ts
   type A  = Pick<{a:number,b:string,c:boolean}, 'a'|'b'>//{a:number,b:string}
   ```
 
-  ##### Omit<T,K> 实现排除已选的属性
+  ##### `Omit<T,K>` 实现排除已选的属性
 
   ```ts
   type A  = {a:number, b:string}
   type A1 = Omit<A, 'a'> // {b:string}
   ```
 
-  ##### Record<K,T>, 创建一个类型,K代表键值的类型, T代表值的类型
+  ##### `Record<K,T>`, 创建一个类型,K代表键值的类型, T代表值的类型
 
   ```ts
   type A1 = Record<string, string> // 等价{[x:string]:string}
   ```
 
-  ![image-20210601185649213](C:\Users\何强\AppData\Roaming\Typora\typora-user-images\image-20210601185649213.png)
+  ![image-20210601185649213](https://file.40017.cn/baoxian/health/health_public/images/blog/image-fail.png)
 
   
 

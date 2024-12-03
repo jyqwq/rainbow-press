@@ -3,6 +3,7 @@ title: uWSGI+Nginx+Django
 tags:
   - Django
   - nginx
+  - 方法论
 createTime: 2021/10/11
 permalink: /article/fs05zbud/
 ---
@@ -81,7 +82,7 @@ $ $ uwsgi --stop uwsgi.pid
 
 ## Nginx.conf
 
-```conf
+```
 server {
         listen  80;
         server_name  django.rainbowinpaper.com;

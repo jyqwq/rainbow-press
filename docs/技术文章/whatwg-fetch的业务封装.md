@@ -2,6 +2,7 @@
 title: whatwg-fetch的业务封装
 tags:
   - 工作
+  - 方法论
 createTime: 2021/10/11
 permalink: /article/vplkynlh/
 ---

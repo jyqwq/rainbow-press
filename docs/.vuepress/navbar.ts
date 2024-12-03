@@ -12,6 +12,6 @@ export const navbar = defineNavbarConfig([
   },
   {
     text: '随想',
-    items: [{ text: '示例', link: '/notes/demo/README.md' }]
+    link: '/notes/README.md',
   },
 ])

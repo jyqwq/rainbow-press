@@ -1007,7 +1007,7 @@ prettier的一些配置
 
 prettier忽略文件
 
-```.ignore
+```
 dist/
 node_modules/
 package-lock.json
@@ -1117,7 +1117,7 @@ module.exports = {
 
 .eslintignore
 
-```.ignore
+```
 dist/
 node_modules/
 package-lock.json

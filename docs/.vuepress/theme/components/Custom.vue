@@ -1,11 +1,7 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const message = ref('Hello World!')
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="my-custom-content">
-    {{ message }}
+    <slot></slot>
   </div>
 </template>

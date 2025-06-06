@@ -1,6 +1,8 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+import { path } from '@vuepress/utils'
 
 export default defineUserConfig({
   base: '/baoxian/rainbow/',
@@ -75,4 +77,10 @@ export default defineUserConfig({
       // },
     },
   }),
+
+  plugins: [
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, './components'),
+    })
+  ]
 })

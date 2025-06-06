@@ -11,6 +11,10 @@ export const navbar = defineNavbarConfig([
     ]
   },
   {
+    text: 'AIChat',
+    link: '/AIChat/README.md',
+  },
+  {
     text: '随想',
     link: '/notes/README.md',
   },

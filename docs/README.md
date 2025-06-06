@@ -16,6 +16,10 @@ config:
           text: 博客
           link: /blog/
         -
+          theme: brand
+          text: AIChat
+          link: /AIChat/README.md
+        -
           theme: alt
           text: 稀土掘金 →
           link: https://juejin.cn/user/1987553160857261

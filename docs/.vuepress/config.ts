@@ -5,7 +5,8 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { path } from '@vuepress/utils'
 
 export default defineUserConfig({
-  base: '/baoxian/rainbow/',
+  // base: '/baoxian/rainbow/',
+  base: '/rainbow/',
   lang: 'zh-CN',
   title: '纸上的彩虹',
   description: '彩虹の前端小窝',
@@ -15,7 +16,8 @@ export default defineUserConfig({
 
   theme: plumeTheme({
     // 添加您的部署域名
-    hostname: 'https://file.40017.cn',
+    // hostname: 'https://file.40017.cn',
+    hostname: 'https://jyqwq.github.io',
 
     plugins: {
       /**

@@ -1,5 +1,5 @@
 {
-  "name": "纸上的彩虹",
+  "name": "rainbow_in_paper",
   "type": "module",
   "version": "1.0.0",
   "description": "彩虹の前端小窝",
@@ -17,6 +17,7 @@
     "vp-update": "pnpm dlx vp-update"
   },
   "devDependencies": {
+    "@types/markdown-it-link-attributes": "^3.0.5",
     "@vuepress/bundler-vite": "2.0.0-rc.18",
     "http-server": "^14.1.1",
     "sass-embedded": "^1.80.6",
@@ -26,6 +27,14 @@
     "vuepress-theme-plume": "1.0.0-rc.118"
   },
   "dependencies": {
-    "@vuepress/plugin-register-components": "2.0.0-rc.103"
+    "@vscode/markdown-it-katex": "^1.1.1",
+    "@vuepress/plugin-register-components": "2.0.0-rc.103",
+    "highlight.js": "^11.11.1",
+    "html-to-image": "^1.11.13",
+    "markdown-it": "^14.1.0",
+    "markdown-it-link-attributes": "^4.0.1",
+    "mermaid-it-markdown": "^1.0.8",
+    "naive-ui": "^2.41.1",
+    "pinia": "^3.0.3"
   }
 }

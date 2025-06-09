@@ -1,4 +1,4 @@
 ---
-layout: Layout
+layout: Custom
 ---
 <AIChat></AIChat>

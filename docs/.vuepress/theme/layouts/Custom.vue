@@ -36,6 +36,11 @@ useHomeHeroTintPlate(canvas,false)
   margin: 64px auto 0;
   position: relative;
 }
+@media (max-width: 960px) {
+  .custom-content {
+    margin: unset !important;
+  }
+}
 
 .bg-filter {
   position: absolute;

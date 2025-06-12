@@ -56,16 +56,16 @@ permalink: /article/coohzi4a/
 
 
 
-| 配置项          | 类型           | 选项 / 示例                                                  | 默认  | 说明                                                         |
-| :-------------- | :------------- | :----------------------------------------------------------- | :---- | :----------------------------------------------------------- |
-| fitView         | Boolean        | true / false                                                 | false | 是否将图适配到画布大小，可以防止超出画布或留白太多。         |
-| fitViewPadding  | Number / Array | 20 / [ 20, 40, 50, 20 ]                                      | 0     | 画布上的四周留白宽度。                                       |
-| animate         | Boolean        | true / false                                                 | false | 是否启用图的动画。                                           |
-| modes           | Object         | {  default: [ 'drag-node', 'drag-canvas' ] }                 | null  | 图上行为模式的集合。由于比较复杂，按需参见：[G6 中的 Mode](https://g6.antv.antgroup.com/zh/docs/manual/middle/states/mode) 教程。 |
-| defaultNode     | Object         | {  type: 'circle',  color: '#000',  style: {   ......  } }   | null  | 节点默认的属性，包括节点的一般属性和样式属性（style）。      |
-| defaultEdge     | Object         | {  type: 'polyline',  color: '#000',  style: {   ......  } } | null  | 边默认的属性，包括边的一般属性和样式属性（style）。          |
-| nodeStateStyles | Object         | {  hover: {   ......  },  select: {   ......  } }            | null  | 节点在除默认状态外，其他状态下的样式属性（style）。例如鼠标放置（hover）、选中（select）等状态。 |
-| edgeStateStyles | Object         | {  hover: {   ......  },  select: {   ......  } }            | null  | 边在除默认状态外，其他状态下的样式属性（style）。例如鼠标放置（hover）、选中（select）等状态。 |
+|       配置项        |       类型        |                           选项 / 示例                            |   默认   |                                                   说明                                                    |
+|:----------------:|:---------------:|:------------------------------------------------------------:|:------:|:-------------------------------------------------------------------------------------------------------:|
+|     fitView      |     Boolean     |                         true / false                         | false  |                                       是否将图适配到画布大小，可以防止超出画布或留白太多。                                        |
+|  fitViewPadding  | Number / Array  |                  20 / \[ 20, 40, 50, 20 \]                   |   0    |                                               画布上的四周留白宽度。                                               |
+|     animate      |     Boolean     |                         true / false                         | false  |                                                是否启用图的动画。                                                |
+|      modes       |     Object      |        {  default: \[ 'drag-node', 'drag-canvas' \] }        |  null  | 图上行为模式的集合。由于比较复杂，按需参见：[G6 中的 Mode](https://g6.antv.antgroup.com/zh/docs/manual/middle/states/mode) 教程。  |
+|   defaultNode    |     Object      |  {  type: 'circle',  color: '#000',  style: {   ......  } }  |  null  |                                     节点默认的属性，包括节点的一般属性和样式属性（style）。                                      |
+|   defaultEdge    |     Object      | {  type: 'polyline',  color: '#000',  style: {   ......  } } |  null  |                                      边默认的属性，包括边的一般属性和样式属性（style）。                                       |
+| nodeStateStyles  |     Object      |      {  hover: {   ......  },  select: {   ......  } }       |  null  |                        节点在除默认状态外，其他状态下的样式属性（style）。例如鼠标放置（hover）、选中（select）等状态。                         |
+| edgeStateStyles  |     Object      |      {  hover: {   ......  },  select: {   ......  } }       |  null  |                         边在除默认状态外，其他状态下的样式属性（style）。例如鼠标放置（hover）、选中（select）等状态。                         |
 
 
 
@@ -80,7 +80,7 @@ permalink: /article/coohzi4a/
 	id: 'node0',          // 元素的 id
   type: 'circle',       // 元素的图形
   size: 40,             // 元素的大小
-  label: 'node0'        // 标签文字
+  label: 'node0',        // 标签文字
   visible: true,        // 控制初次渲染显示与隐藏，若为 false，代表隐藏。默认不隐藏
   labelCfg: {           // 标签配置属性
     positions: 'center',// 标签的属性，标签在元素中的位置
@@ -88,7 +88,7 @@ permalink: /article/coohzi4a/
       fontSize: 12      // 标签的样式属性，文字字体大小
       // ...            // 标签的其他样式属性
     }
-  }
+  },
   // ...,               // 其他属性
   style: {              // 包裹样式属性的字段 style 与其他属性在数据结构上并行
     fill: '#000',       // 样式属性，元素的填充色

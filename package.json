@@ -27,14 +27,18 @@
     "vuepress-theme-plume": "1.0.0-rc.118"
   },
   "dependencies": {
+    "@vicons/ionicons5": "^0.13.0",
     "@vscode/markdown-it-katex": "^1.1.1",
     "@vuepress/plugin-register-components": "2.0.0-rc.103",
+    "chart.js": "^4.4.9",
     "highlight.js": "^11.11.1",
     "html-to-image": "^1.11.13",
     "markdown-it": "^14.1.0",
     "markdown-it-link-attributes": "^4.0.1",
+    "mermaid": "^11.6.0",
     "mermaid-it-markdown": "^1.0.8",
     "naive-ui": "^2.41.1",
-    "pinia": "^3.0.3"
+    "pinia": "^3.0.3",
+    "vuepress-plugin-md-enhance": "2.0.0-rc.90"
   }
 }

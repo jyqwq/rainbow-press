@@ -1,0 +1,59 @@
+.ai-message {
+    background-color: transparent;
+    font-size: 14px;
+}
+.ai-message p {
+    white-space: pre-wrap;
+}
+.ai-message ol {
+    list-style-type: decimal;
+}
+.ai-message ul {
+    list-style-type: disc;
+}
+.ai-message pre code,
+.ai-message pre tt {
+    line-height: 1.65;
+}
+.ai-message .highlight pre,
+.ai-message pre {
+    background-color: #fff;
+}
+.ai-message code.hljs {
+    padding: 0;
+}
+.ai-message .code-block-wrapper {
+    position: relative;
+    padding: 0 12px;
+    border-radius: 8px;
+}
+.ai-message .code-block-header {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #b3b3b3;
+}
+.ai-message .code-block-header__copy {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    user-select: none;
+}
+.ai-message .code-block-header__copy:hover {
+    color: #65a665;
+}
+.ai-message div[id^='mermaid-container'] {
+    padding: 4px;
+    border-radius: 4px;
+    overflow-x: auto !important;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+}
+.ai-message li {
+    margin-left: 16px;
+    box-sizing: border-box;
+}

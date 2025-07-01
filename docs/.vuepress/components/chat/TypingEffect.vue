@@ -20,6 +20,10 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
+  break: {
+    type: Boolean,
+    default: false
+  },
 });
 const emits = defineEmits(['update', 'ok'])
 
@@ -51,6 +55,18 @@ watch(() => props.text, (newText) => {
   }
 });
 
+// 停止回答
+watch(() => props.break, (val) => {
+  if (val) {
+    displayText.value = props.text + ''
+    clearTimeout(timer);
+    adding.value = false;
+    setTimeout(() =>{
+      emits('ok')
+    } ,600)
+  }
+});
+
 // 初始化
 updateDisplayText();
 
@@ -66,6 +82,7 @@ onUnmounted(() => {
   font-weight: 700;
   vertical-align: baseline;
   animation: blink 1s infinite;
+  color: #3a5ccc;
 }
 
 @keyframes blink {

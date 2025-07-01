@@ -18,7 +18,7 @@
             <div v-if="!msg.text && !loadingSend">
               未获取到信息
             </div>
-            <TypingEffect v-else-if="msg.text" :text="msg.text" :showCursor="!msg.ready" @update="updateAIText(index)" @ok="textAllShow(index)" />
+            <TypingEffect v-else-if="msg.text" :text="msg.text" :showCursor="!msg.ready" :break="msg.break" @update="updateAIText(index)" @ok="textAllShow(index)" />
           </div>
           <div v-else class="question-message">
             <div>{{ msg.text }}</div>
@@ -27,6 +27,14 @@
 
       </div>
       <div class="chat-toolbar">
+        <NButton v-if="loadingSend" class="pause-btn" round color="#309BF5B3" @click="stopAnswer">
+          <template #icon>
+            <NIcon>
+              <Stop />
+            </NIcon>
+          </template>
+          停止回答
+        </NButton>
         <NInput size="large" placeholder="点击输入问题" clearable v-model:value="prompt" @keydown.enter="sendAiText" />
         <NIcon size="24" :color="prompt ? '#309BF5B3':'#309BF54C'" class="send-btn" @click="sendAiText"><SendSharp /></NIcon>
       </div>
@@ -38,16 +46,16 @@
   </div>
 </template>
 <script setup>
-import { ref, nextTick } from "vue";
-import { NInput, NIcon, createDiscreteApi } from 'naive-ui'
-import { SendSharp } from '@vicons/ionicons5'
+import { ref, nextTick, onUnmounted } from "vue"
+import { NInput, NIcon, createDiscreteApi, NButton } from 'naive-ui'
+import { SendSharp, Stop } from '@vicons/ionicons5'
 import MarkdownIt from 'markdown-it'
 import MdKatex from '@vscode/markdown-it-katex'
 import MdLinkAttributes from 'markdown-it-link-attributes'
 import MdMermaid from 'mermaid-it-markdown'
 import hljs from 'highlight.js'
-import MessageTime from "./MessageTime.vue";
-import TypingEffect from "./TypingEffect.vue";
+import MessageTime from "./MessageTime.vue"
+import TypingEffect from "./TypingEffect.vue"
 
 const url = `https://dashscope.aliyuncs.com/api/v1/apps/d428cc7d79ce4f13ae13bf86b194e80c/completion`;
 
@@ -65,10 +73,14 @@ const mdi = new MarkdownIt({
 })
 mdi.use(MdLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' } }).use(MdKatex).use(MdMermaid)
 
+let reader = null
+let controller = null
+
 const aiCtx = ref()
 const prompt = ref(null)
 const loadingSend = ref(false)
 const aiMessageList = ref([])
+
 
 const { message } = createDiscreteApi(['message'])
 
@@ -137,9 +149,10 @@ const callDashScope = async (text) => {
     const currentTime = new Date().getTime()
     // AbortController 对象的作用是对一个或多个 Web 请求进行中止操作，像 fetch 请求、ReadableStream 以及第三方库的操作都可以取消。
     // 核心机制：借助 AbortSignal 来实现操作的中止。AbortController 会生成一个信号对象，该对象可被传递给请求，当调用 abort() 方法时，就会触发请求的取消操作。
-    const controller = new AbortController()
+    controller = new AbortController()
     aiMessageList.value.push({ ai: false, text, time: currentTime })
     aiMessageList.value.push({ ai: true, text: '', time: currentTime })
+    scrollToBottom()
     const currentIndex = aiMessageList.value.length -1
     const response = await fetch(
       url,
@@ -173,7 +186,7 @@ const callDashScope = async (text) => {
     const decoder = new TextDecoder('UTF-8')
     // JavaScript 中用于处理 fetch 请求响应流的方法，它允许你以可控的方式逐块读取响应数据，而非一次性处理整个响应。这在处理大文件下载、实时数据流（如视频、SSE）或需要渐进式解析数据的场景中特别有用。
     // 获取一个 ReadableStreamDefaultReader 对象，用于逐块读取响应的二进制数据（Uint8Array）。
-    const reader = response.body.getReader()
+    reader = response.body.getReader()
 
     // 用于累计接收到的数据
     let accumulatedText = ''
@@ -186,8 +199,10 @@ const callDashScope = async (text) => {
         console.log('流读取完成');
         // 中断fetch请求
         controller.abort()
+        controller = null
         // 资源释放：释放读取器锁
         reader.releaseLock()
+        reader = null
 
         renderToAI(accumulatedText, currentIndex, true)
 
@@ -210,8 +225,20 @@ const callDashScope = async (text) => {
   } catch (e) {
     loadingSend.value = false
     console.log(e);
+    if (e.name === 'AbortError') return
     message.error('系统错误')
   }
+}
+
+const stopAnswer = () => {
+  controller?.abort()
+  controller = null
+  reader?.releaseLock()
+  reader = null
+  loadingSend.value = false
+  const currentIndex = aiMessageList.value.length -1
+  aiMessageList.value[currentIndex].ready = true
+  aiMessageList.value[currentIndex].break = true
 }
 
 const extractText = (jsonString) => {
@@ -266,17 +293,70 @@ const renderToAI = (text, index, ready=false) => {
   currentMsg.ready = ready
 }
 
-const updateAIText = throttleNextTick((index)=> {
-  aiMessageList.value[index].showBtn = false
+const updateAIText = throttleNextTick(()=> {
   scrollToBottom()
 })
 
-const textAllShow = (index) => {
-  aiMessageList.value[index].showBtn = true
+const textAllShow = () => {
   setTimeout(() => {
+    addCopyEvents()
     scrollToBottom('.ai-content')
   }, 100)
 }
+
+ const copyToClip = (text) => {
+  return new Promise((resolve, reject) => {
+    try {
+      const input = document.createElement('textarea')
+      input.setAttribute('readonly', 'readonly')
+      input.value = text
+      document.body.appendChild(input)
+      input.select()
+      if (document.execCommand('copy'))
+        document.execCommand('copy')
+      document.body.removeChild(input)
+      resolve(text)
+    }
+    catch (error) {
+      reject(error)
+    }
+  })
+}
+
+
+const addCopyEvents = () => {
+  if (aiCtx.value) {
+    const copyBtn = aiCtx.value.querySelectorAll('.code-block-header__copy')
+    copyBtn.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const code = btn.parentElement?.nextElementSibling?.textContent
+        if (code) {
+          copyToClip(code).then(() => {
+            message.success('复制成功')
+            btn.textContent = '复制成功'
+            setTimeout(() => {
+              btn.textContent = '复制代码'
+            }, 1000)
+          })
+        }
+      })
+    })
+  }
+}
+
+const removeCopyEvents = () => {
+  if (aiCtx.value) {
+    const copyBtn = aiCtx.value.querySelectorAll('.code-block-header__copy')
+    copyBtn.forEach((btn) => {
+      btn.removeEventListener('click', () => { })
+    })
+  }
+}
+
+onUnmounted(() => {
+  removeCopyEvents()
+})
+
 
 </script>
 <style scoped>
@@ -406,10 +486,17 @@ const textAllShow = (index) => {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .chat-toolbar .send-btn {
   margin-left: 12px;
   margin-right: 12px;
+}
+.chat-toolbar .pause-btn {
+  position: absolute;
+  left: 50%;
+  top: -42px;
+  transform: translateX(-50%);
 }
 </style>
 <style>

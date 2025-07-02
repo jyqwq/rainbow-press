@@ -84,5 +84,15 @@ export default defineUserConfig({
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
     })
+  ],
+
+  // @ts-ignore
+  enhanceAppFiles: [
+    {
+      name: 'naive-ui',
+      content: `export default ({ app }) => {
+        installNaiveUI(app);
+      }`
+    }
   ]
 })

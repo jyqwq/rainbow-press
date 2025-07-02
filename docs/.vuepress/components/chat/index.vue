@@ -47,12 +47,10 @@
 </template>
 <script setup>
 import { ref, nextTick, onUnmounted } from "vue"
-import { NInput, NIcon, createDiscreteApi, NButton } from 'naive-ui'
+import { createDiscreteApi } from 'naive-ui';
 import { SendSharp, Stop } from '@vicons/ionicons5'
 import MarkdownIt from 'markdown-it'
-import MdKatex from '@vscode/markdown-it-katex'
 import MdLinkAttributes from 'markdown-it-link-attributes'
-import MdMermaid from 'mermaid-it-markdown'
 import hljs from 'highlight.js'
 import MessageTime from "./MessageTime.vue"
 import TypingEffect from "./TypingEffect.vue"
@@ -71,7 +69,7 @@ const mdi = new MarkdownIt({
     return highlightBlock(hljs.highlightAuto(code).value, '')
   },
 })
-mdi.use(MdLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' } }).use(MdKatex).use(MdMermaid)
+mdi.use(MdLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' } })
 
 let reader = null
 let controller = null

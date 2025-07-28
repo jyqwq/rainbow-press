@@ -77,7 +77,9 @@ let controller = null
 const aiCtx = ref()
 const prompt = ref(null)
 const loadingSend = ref(false)
-const aiMessageList = ref([])
+const aiMessageList = ref([
+  { ai: true, text: '你好，我是一位资深的前端开发者。<br />精通JavaScript、HTML、CSS。<br />熟练掌握React、Vue、微信小程序以及混合开发。<br />熟悉浏览器运行原理以及计算机网络方面的知识。<br />能够根据需求合理设计项目架构以及针对代码段给出优化建议等等。<br />欢迎提问~', time: Date.now(), ready: true },
+])
 
 
 const { message } = createDiscreteApi(['message'])
@@ -372,10 +374,10 @@ onUnmounted(() => {
   max-width: 1000px;
   background: linear-gradient(
     to right bottom,
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.1)
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.4)
   );
-  border-radius: 2rem;
+  border-radius: 1rem;
   padding: 2rem;
   box-sizing: border-box;
   z-index: 2;

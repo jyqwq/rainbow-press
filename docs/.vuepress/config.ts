@@ -19,6 +19,11 @@ export default defineUserConfig({
     // hostname: 'https://file.40017.cn',
     hostname: 'https://jyqwq.github.io',
 
+    footer: {
+      message: '',
+      copyright: `© ${new Date().getFullYear()} Rainbow In Paper. All rights reserved.`,
+    },
+
     plugins: {
       /**
        * Shiki 代码高亮

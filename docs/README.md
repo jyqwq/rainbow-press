@@ -59,7 +59,7 @@ config:
       -
         title: 这是博客
         icon: 📖
-        details: 技术要沉淀，那最好的方法就是写写写~
+        details: 技术要沉淀，那最好的方法就是写呗~
       -
         title: 也是空间
         icon: 📝
